@@ -1,1 +1,5 @@
 * linguist-vendored
+
+hashtable.c -linguist-vendored
+hashtable.h -linguist-vendored
+philspel.c -linguist-vendored
