@@ -71,8 +71,8 @@ int main(int argc, char **argv) {
 unsigned int stringHash(void *s) {
   char *string = (char *)s;
   // -- TODO --
-  unsigned int hash = 0;
-  for (int i = 0; i < strlen(string); i++) {
+  unsigned hash = 0;
+  for (size_t i = 0; i < strlen(string); i++) {
     hash = hash * 31 + string[i];
   }
   return hash % 2255;
@@ -112,11 +112,11 @@ void readDictionary(char *dictName) {
     fprintf(stderr, "Dictionary file does not exist\n");
     exit(1);
   }
-  int maxWordLength = 60;
+  size_t maxWordLength = 60;
   char *wordBuffer = malloc(sizeof(char) * (maxWordLength + 1));
   wordBuffer[0] = '\0';
   for (char charBuffer = fgetc(dict);; charBuffer = fgetc(dict)) {
-    int wordLength = strlen(wordBuffer);
+    size_t wordLength = strlen(wordBuffer);
     if (charBuffer == '\n' || charBuffer == EOF) {
       char *word = malloc(sizeof(char) * (wordLength + 1));
       strcpy(word, wordBuffer);
@@ -161,11 +161,11 @@ void readDictionary(char *dictName) {
  */
 void processInput() {
   // -- TODO --
-  int maxWordLength = 60;
+  size_t maxWordLength = 60;
   char *wordBuffer = malloc(sizeof(char) * (maxWordLength + 1));
   wordBuffer[0] = '\0';
   for (char charBuffer = getchar();; charBuffer = getchar()) {
-    int wordLength = strlen(wordBuffer);
+    size_t wordLength = strlen(wordBuffer);
     if (isalpha(charBuffer)) {
       if (wordLength == maxWordLength) {
         maxWordLength *= 1.5;
